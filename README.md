@@ -19,3 +19,12 @@ python3 -m http.server 8000
 ```
 
 then open http://localhost:8000.
+
+## Domain
+
+`CNAME` makes GitHub Pages serve the site at collinmotion.com. At the registrar, point the domain at GitHub:
+
+- four `A` records on `@`: 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153
+- a `CNAME` record on `www` pointing to `collinbutrlakorn.github.io`
+
+Then in the repo under Settings, Pages, turn on Enforce HTTPS once it's available.
