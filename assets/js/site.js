@@ -250,7 +250,7 @@
   if (page === "home") {
     setupHero();
     const st = $("#statement");
-    if (st) st.textContent = C.statement;
+    if (st) C.statement ? (st.textContent = C.statement) : st.closest(".section").remove();
     // Without a reel, the hero already shows the lead film, so the list starts after it.
     renderFilms($("#films"), 3, $(".hero.has-still") ? 1 : 0);
     renderPhotoStrip($("#photo-strip"));

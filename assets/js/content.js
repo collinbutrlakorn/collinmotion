@@ -46,9 +46,8 @@ window.CM = {
     email: "", // optional; leave empty to hide
   },
 
-  // EDIT ME if it doesn't sound like you: the line under the reel
-  statement:
-    "Most of what I make comes back to home: leaving it, missing it, and finally seeing it clearly.",
+  // Optional line under the reel. Left empty, the section is hidden.
+  statement: "",
 
   films: [
     {
@@ -139,7 +138,7 @@ window.CM = {
     paragraphs: [
       "I've always been an artist in every respect.",
       "Grew up drawing and got into acting and even wrote books. Throughout my lifetime I wanted to create things for other people to enjoy.",
-      "Years later and CollinMotion is where I can bring my vision to life.",
+      "Years later, CollinMotion is where I can bring my vision to life.",
     ],
     kit: [], // optional, e.g. ["Sony A7 IV", "35mm f/1.4"]; leave empty to hide
   },
