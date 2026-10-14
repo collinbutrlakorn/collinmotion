@@ -135,11 +135,11 @@ window.CM = {
 
   about: {
     portrait: "", // e.g. "media/collin.jpg"
-    // EDIT ME: each string is a paragraph. The first one is set larger.
+    // Each string is a paragraph. The first one is set larger.
     paragraphs: [
-      "I'm Collin. I make films and photographs, mostly about home and the people and places that make it.",
-      "CollinMotion is where my personal work lives: the things I make because I want to, not because anyone asked. Some of it is polished and some of it was thrown together the night before. All of it is honest.",
-      "If something here stays with you, I'd love to hear about it.",
+      "I've always been an artist in every respect.",
+      "Grew up drawing and got into acting and even wrote books. Throughout my lifetime I wanted to create things for other people to enjoy.",
+      "Years later and CollinMotion is where I can bring my vision to life.",
     ],
     kit: [], // optional, e.g. ["Sony A7 IV", "35mm f/1.4"]; leave empty to hide
   },
