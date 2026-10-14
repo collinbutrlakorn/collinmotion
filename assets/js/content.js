@@ -75,16 +75,30 @@ window.CM = {
     },
   ],
 
-  // Series with no photos yet stay hidden. When every series is empty, the
-  // site points people to Instagram instead.
   photography: [
     {
-      id: "home",
-      title: "Home",
-      place: "Alaska",
+      id: "coast",
+      title: "The Coast",
+      place: "Oregon coast", // EDIT ME if that's not right
       year: "",
-      note: "EDIT ME: a couple of sentences about what you were looking for in this set.",
-      photos: [], // e.g. ["media/photos/home/01.jpg", "media/photos/home/02.jpg"]
+      note: "", // optional: a sentence or two about the set; leave empty to hide
+      photos: ["media/photos/coast/01.jpg", "media/photos/coast/02.jpg", "media/photos/coast/03.jpg", "media/photos/coast/04.jpg", "media/photos/coast/05.jpg"],
+    },
+    {
+      id: "woods",
+      title: "Woods and Water",
+      place: "",
+      year: "",
+      note: "",
+      photos: ["media/photos/woods/01.jpg", "media/photos/woods/02.jpg", "media/photos/woods/03.jpg", "media/photos/woods/04.jpg", "media/photos/woods/05.jpg", "media/photos/woods/06.jpg"],
+    },
+    {
+      id: "after-dark",
+      title: "After Dark",
+      place: "",
+      year: "",
+      note: "",
+      photos: ["media/photos/after-dark/01.jpg", "media/photos/after-dark/02.jpg", "media/photos/after-dark/03.jpg"],
     },
   ],
 
