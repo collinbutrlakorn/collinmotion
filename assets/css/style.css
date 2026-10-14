@@ -306,7 +306,10 @@ h2, .page-title {
 }
 .short { scroll-snap-align: start; text-decoration: none; }
 .short .frame { aspect-ratio: 9 / 16; }
-.short p { margin: .6rem 0 0; font-size: var(--t-sm); color: var(--pencil); }
+.short .frame img { transition: transform 1.2s var(--ease); }
+.short:hover .frame img { transform: scale(1.03); }
+.short h3 { margin: .7rem 0 0; font-size: var(--t-base); font-weight: 700; letter-spacing: -.015em; line-height: 1.2; }
+.short p { margin: .1rem 0 0; font-size: var(--t-sm); color: var(--pencil); }
 .empty-note { color: var(--pencil); max-width: var(--measure); margin: 0; }
 .empty-note a { color: var(--ink); text-decoration-color: var(--marigold); text-underline-offset: .2em; text-decoration-thickness: 2px; }
 

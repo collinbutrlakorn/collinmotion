@@ -23,8 +23,9 @@
 
   SHORTS
     Leave the list empty and the shorts section quietly says more are coming.
-    url: link to the reel on Instagram or the short on YouTube.
-    cover: a 9:16 still, e.g. "media/shorts/first-light.jpg".
+    url:   link to the reel on Instagram or the short on YouTube.
+    cover: a 9:16 still, e.g. "media/shorts/first-light.jpg" (720x1280 is plenty).
+    with:  optional, the collaborator's handle when the reel lives on their account.
 
   Anything marked "EDIT ME" is placeholder copy written to show the shape.
 */
@@ -85,7 +86,7 @@ window.CM = {
       place: "Oregon",
       year: "",
       note: "",
-      photos: ["media/photos/marion-lake-1/01.jpg", "media/photos/marion-lake-1/02.jpg", "media/photos/marion-lake-1/03.jpg"],
+      photos: ["media/photos/marion-lake-1/01.jpg", "media/photos/marion-lake-1/02.jpg"],
     },
     {
       id: "marion-lake-2",
@@ -94,6 +95,14 @@ window.CM = {
       year: "",
       note: "",
       photos: ["media/photos/marion-lake-2/01.jpg", "media/photos/marion-lake-2/02.jpg", "media/photos/marion-lake-2/03.jpg", "media/photos/marion-lake-2/04.jpg"],
+    },
+    {
+      id: "newport",
+      title: "Newport, OR",
+      place: "",
+      year: "",
+      note: "",
+      photos: ["media/photos/newport/01.jpg", "media/photos/newport/02.jpg", "media/photos/newport/03.jpg"],
     },
     {
       id: "seaside",
@@ -113,8 +122,15 @@ window.CM = {
     },
   ],
 
+  // Newest first. "with" credits a collaborator whose account posted it.
+  // EDIT ME: "At the falls", "The house" and "The coast" are placeholder titles.
   shorts: [
-    // { title: "First light", url: "https://www.instagram.com/reel/XXXX/", cover: "media/shorts/first-light.jpg" },
+    { title: "At the falls", url: "https://www.instagram.com/reel/DK5C71lvzQN/", cover: "media/shorts/DK5C71lvzQN.jpg" },
+    { title: "Elijah's Cuts", url: "https://www.instagram.com/reel/DK3rBe7OBng/", cover: "media/shorts/DK3rBe7OBng.jpg", with: "@elijahscuts" },
+    { title: "The house", url: "https://www.instagram.com/reel/DJ5mD6Axxqe/", cover: "media/shorts/DJ5mD6Axxqe.jpg" },
+    { title: "Anchored to the Ocean", url: "https://www.instagram.com/reel/DFsuE2oRklR/", cover: "media/shorts/DFsuE2oRklR.jpg" },
+    { title: "The Golden Touch", url: "https://www.instagram.com/reel/C_W5D7ZPKHw/", cover: "media/shorts/C_W5D7ZPKHw.jpg", with: "@daragoldd" },
+    { title: "The coast", url: "https://www.instagram.com/reel/C_KT3ofxOeU/", cover: "media/shorts/C_KT3ofxOeU.jpg" },
   ],
 
   about: {

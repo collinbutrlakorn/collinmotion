@@ -213,7 +213,13 @@
       return;
     }
     el.innerHTML = C.shorts
-      .map((s) => `<a class="short" href="${esc(s.url)}" target="_blank" rel="noopener">${frame(s.cover, s.title, "", s.title)}<p>${esc(s.title)}</p></a>`)
+      .map(
+        (s) => `<a class="short" href="${esc(s.url)}" target="_blank" rel="noopener" aria-label="${esc(s.title)}, opens on Instagram">
+          ${frame(s.cover, s.title, "", "")}
+          <h3>${esc(s.title)}</h3>
+          ${s.with ? `<p>with ${esc(s.with)}</p>` : ""}
+        </a>`
+      )
       .join("");
   }
 
