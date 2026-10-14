@@ -133,7 +133,7 @@ window.CM = {
   ],
 
   about: {
-    portrait: "", // e.g. "media/collin.jpg"
+    portrait: "media/collin.jpg",
     // Each string is a paragraph. The first one is set larger.
     paragraphs: [
       "I've always been an artist in every respect.",

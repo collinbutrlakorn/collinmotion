@@ -119,6 +119,10 @@ a { color: inherit; }
 .site-header nav a[aria-current="page"] { border-bottom-color: var(--marigold); }
 .is-home .site-header .mark span { display: none; } /* the hero carries the name */
 .site-header { align-items: center; }
+@media (max-width: 560px) {
+  .site-header .mark span { display: none; } /* the logo alone on phones, so the nav fits */
+  .site-header nav ul { gap: 1rem; }
+}
 
 /* ---------- hero ---------- */
 
