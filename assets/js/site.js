@@ -11,7 +11,7 @@
   function hueFor(s) {
     let h = 0;
     for (const ch of s) h = (h * 31 + ch.charCodeAt(0)) % 997;
-    const hues = [24, 32, 12, 4, 350, 160, 40];
+    const hues = [44, 38, 48, 30, 52, 40, 34];
     return { h: hues[h % hues.length], x: 20 + (h % 60), y: 30 + ((h >> 2) % 50) };
   }
 
@@ -31,7 +31,7 @@
   function setupHero() {
     const hero = $(".hero");
     if (!hero) return;
-    $(".hero p").textContent = C.site.tagline;
+    $(".hero .hand").textContent = C.site.tagline;
     const video = $("video", hero);
     const toggle = $("#reel-toggle");
     if (!C.site.reel) return video.remove();
@@ -63,7 +63,7 @@
         </button>
         <div class="info">
           <h3>${esc(f.title)}</h3>
-          ${f.feeling ? `<p class="feeling">${esc(f.feeling)}</p>` : ""}
+          ${f.feeling ? `<p class="feeling hand">${esc(f.feeling)}</p>` : ""}
           ${meta ? `<p class="meta">${meta}</p>` : ""}
         </div>
       </article>`;

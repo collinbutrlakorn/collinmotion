@@ -5,18 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CollinMotion</title>
   <meta name="description" content="Short films and photographs by Collin Butrlakorn, made between Alaska and Oregon.">
-  <meta name="theme-color" content="#2a1e1b">
+  <meta name="theme-color" content="#fbf3dc">
   <meta property="og:title" content="CollinMotion">
   <meta property="og:description" content="Short films and photographs by Collin Butrlakorn.">
   <meta property="og:image" content="media/reel-poster.jpg">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600&family=Young+Serif&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-page="home" class="is-home">
   <a class="skip" href="#main">Skip to content</a>
+  <div class="sunlight" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 
   <header class="site-header">
     <a class="mark" href="./">CollinMotion</a>
@@ -30,15 +31,15 @@
   </header>
 
   <section class="hero" aria-label="Reel">
-    <div class="reel-fallback" aria-hidden="true"></div>
-    <video muted loop playsinline autoplay preload="auto" aria-hidden="true"></video>
-    <div class="hero-text">
-      <h1>Collin<span>Motion</span></h1>
-      <p></p>
+    <h1>CollinMotion</h1>
+    <div class="reel">
+      <div class="reel-fallback" aria-hidden="true"></div>
+      <video muted loop playsinline autoplay preload="auto" aria-hidden="true"></video>
+      <div class="reel-controls">
+        <button id="reel-toggle" type="button">Pause reel</button>
+      </div>
     </div>
-    <div class="reel-controls">
-      <button id="reel-toggle" type="button">Pause reel</button>
-    </div>
+    <p class="hand"></p>
   </section>
 
   <main id="main">
