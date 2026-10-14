@@ -27,6 +27,10 @@
     return id ? `https://i.ytimg.com/vi/${encodeURIComponent(id)}/maxresdefault.jpg` : "";
   }
 
+  const SERIES = C.photography.filter((s) => s.photos && s.photos.length);
+  const igNote = (lead) =>
+    `<p class="empty-note">${lead} For now the newest ones go up on <a href="${esc(C.site.instagram)}">Instagram</a> first.</p>`;
+
   // ---------- hero reel ----------
   function setupHero() {
     const hero = $(".hero");
@@ -34,12 +38,28 @@
     $(".hero .hand").textContent = C.site.tagline;
     const video = $("video", hero);
     const toggle = $("#reel-toggle");
-    if (!C.site.reel) return video.remove();
+    const lead = C.films.find((f) => f.youtube);
+    const useStill = () => {
+      video.remove();
+      if (!lead) return;
+      const reel = $(".reel", hero);
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "reel-still";
+      b.setAttribute("aria-label", `Play ${lead.title}`);
+      b.innerHTML = `<img src="${ytThumb(lead.youtube)}" alt=""><span class="play-badge">Watch ${esc(lead.title)}</span>`;
+      const img = $("img", b);
+      img.addEventListener("error", () => (img.src = img.src.replace("maxresdefault", "hqdefault")), { once: true });
+      b.addEventListener("click", () => openPlayer(lead));
+      reel.appendChild(b);
+      hero.classList.add("has-still");
+    };
+    if (!C.site.reel) return useStill();
 
     video.poster = C.site.reelPoster || "";
     video.src = C.site.reel;
     video.addEventListener("loadeddata", () => hero.classList.add("has-reel"), { once: true });
-    video.addEventListener("error", () => video.remove(), { once: true });
+    video.addEventListener("error", useStill, { once: true });
 
     const setLabel = () => (toggle.textContent = video.paused ? "Play reel" : "Pause reel");
     if (reduceMotion) video.removeAttribute("autoplay");
@@ -56,7 +76,7 @@
     const media = f.still ? frame(f.still, label, "", "") : f.youtube ? frame(ytThumb(f.youtube), label) : frame("", label);
     const meta = [f.year, f.runtime, f.place].filter(Boolean).map((m) => `<span>${esc(m)}</span>`).join("");
     return `
-      <article class="film">
+      <article class="film"${f.zoom ? ` style="--zoom:${+f.zoom}"` : ""}>
         <button class="play" type="button" data-film="${i}" ${f.youtube ? "" : "disabled"} aria-label="Play ${esc(f.title)}">
           ${media}
           ${f.youtube ? `<span class="play-badge">Watch</span>` : ""}
@@ -69,10 +89,10 @@
       </article>`;
   }
 
-  function renderFilms(el, limit) {
+  function renderFilms(el, limit, skip = 0) {
     if (!el) return;
-    const list = limit ? C.films.slice(0, limit) : C.films;
-    el.innerHTML = list.map(filmHTML).join("");
+    const list = C.films.map((f, i) => [f, i]).slice(skip, limit ? skip + limit : undefined);
+    el.innerHTML = list.map(([f, i]) => filmHTML(f, i)).join("");
     // YouTube's maxres thumbnail doesn't exist for every video; fall back.
     el.querySelectorAll("img[src*='maxresdefault']").forEach((img) =>
       img.addEventListener("error", () => (img.src = img.src.replace("maxresdefault", "hqdefault")), { once: true })
@@ -110,7 +130,8 @@
 
   function renderPhotoStrip(el) {
     if (!el) return;
-    el.innerHTML = C.photography
+    if (!SERIES.length) return el.closest(".section").remove(); // nothing to show on home yet
+    el.innerHTML = SERIES
       .slice(0, 3)
       .map((s) => `<a href="photography.html#${encodeURIComponent(s.id)}" aria-label="${esc(s.title)}">${frame(s.photos[0], s.title, "", s.title)}</a>`)
       .join("");
@@ -120,21 +141,18 @@
     const root = $("#photography-root");
     const show = () => {
       const id = decodeURIComponent(location.hash.slice(1));
-      const s = C.photography.find((x) => x.id === id);
+      const s = SERIES.find((x) => x.id === id);
       if (!s) {
         root.innerHTML = `
           <header class="section-head"><div>
             <h1 class="page-title">Photography</h1>
             <p class="lede">Photographs in small sets, each one a place or a stretch of time.</p>
           </div></header>
-          <div class="series-grid">${C.photography.map(seriesCard).join("")}</div>`;
+          ${SERIES.length ? `<div class="series-grid">${SERIES.map(seriesCard).join("")}</div>` : igNote("Photo sets are on the way.")}`;
         document.title = "Photography | CollinMotion";
         return;
       }
-      const ratios = ["4 / 5", "3 / 2", "1 / 1", "2 / 3", "5 / 4"];
-      const photos = s.photos.length
-        ? s.photos.map((p, i) => `<button type="button" data-i="${i}" aria-label="Open photo ${i + 1} of ${s.photos.length}">${frame(p, s.title, "", `${s.title}, photo ${i + 1}`)}</button>`)
-        : Array.from({ length: 6 }, (_, i) => `<div style="--ar:${ratios[i % ratios.length]};margin-bottom:clamp(.75rem,2vw,1.5rem)">${frame("", `${s.title}, ${i + 1}`)}</div>`);
+      const photos = s.photos.map((p, i) => `<button type="button" data-i="${i}" aria-label="Open photo ${i + 1} of ${s.photos.length}">${frame(p, s.title, "", `${s.title}, photo ${i + 1}`)}</button>`);
       root.innerHTML = `
         <div class="series-view">
           <a class="back" href="photography.html">All photography</a>
@@ -183,9 +201,7 @@
   function renderShorts(el) {
     if (!el) return;
     if (!C.shorts.length) {
-      el.outerHTML = `<p class="empty-note">Short-form pieces are on the way. Until then, the newest ones go up on <a href="${esc(
-        C.site.instagram
-      )}">Instagram</a> first.</p>`;
+      el.outerHTML = igNote("Short-form pieces are on the way.");
       return;
     }
     el.innerHTML = C.shorts
@@ -196,9 +212,12 @@
   // ---------- about ----------
   function renderAbout() {
     const a = C.about;
-    $("#about-portrait").outerHTML = frame(a.portrait, "Collin", "", "Collin Butrlakorn");
+    $("#about-portrait").outerHTML = a.portrait
+      ? frame(a.portrait, "Collin", "", "Collin Butrlakorn")
+      : `<div class="about-mark"><img src="assets/logo/cb-sun.png" alt="CollinMotion logo"></div>`;
     $("#about-text").innerHTML = a.paragraphs.map((p) => `<p>${esc(p)}</p>`).join("");
-    $("#about-kit").innerHTML = a.kit.map((k) => `<li>${esc(k)}</li>`).join("");
+    if (a.kit && a.kit.length) $("#about-kit").innerHTML = a.kit.map((k) => `<li>${esc(k)}</li>`).join("");
+    else { $("#about-kit").previousElementSibling.remove(); $("#about-kit").remove(); }
   }
 
   // ---------- shared ----------
@@ -218,7 +237,8 @@
     setupHero();
     const st = $("#statement");
     if (st) st.textContent = C.statement;
-    renderFilms($("#films"), 3);
+    // Without a reel, the hero already shows the lead film, so the list starts after it.
+    renderFilms($("#films"), 3, $(".hero.has-still") ? 1 : 0);
     renderPhotoStrip($("#photo-strip"));
     renderShorts($("#shorts"));
   }

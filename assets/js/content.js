@@ -9,6 +9,7 @@
              https://www.youtube.com/watch?v=dQw4w9WgXcQ  ->  "dQw4w9WgXcQ"
     feeling: one line on what the film feels like, in your own words.
              This shows instead of a genre, so make it honest.
+    zoom:    optional, e.g. 1.3, to crop black letterbox bars off a thumbnail.
     still:   optional custom thumbnail, e.g. "media/stills/cold-water.jpg".
              If left out, the YouTube thumbnail is used.
     The first film in the list is shown largest, so put your favorite first.
@@ -29,72 +30,61 @@
 window.CM = {
   site: {
     name: "CollinMotion",
-    // EDIT ME: one sentence under the name on the home page
-    tagline: "Short films and photographs about people, places, and the feelings that stay after.",
-    // The full-screen reel. Export a 20–40s loop, 1080p, no audio needed,
-    // H.264 MP4 under ~15 MB, and save it as media/reel.mp4.
-    reel: "media/reel.mp4",
-    reelPoster: "media/reel-poster.jpg",
-    youtube: "https://www.youtube.com/@collinbutrlakorn",
+    // Your signature line, written in pen under the name on the home page
+    tagline: "Vision made visible.",
+    // The reel at the top of the home page. Export a 20–40s loop, 1080p,
+    // no audio needed, H.264 MP4 under ~15 MB, save it as media/reel.mp4,
+    // then set reel: "media/reel.mp4". While it's empty, the top of the page
+    // shows your first film's thumbnail and plays that film when clicked.
+    reel: "",
+    reelPoster: "",
+    youtube: "https://www.youtube.com/@CollinButrlakorn",
     instagram: "https://www.instagram.com/collinmotion",
     email: "", // optional; leave empty to hide
   },
 
-  // EDIT ME: home page statement under the reel
+  // EDIT ME if it doesn't sound like you: the line under the reel
   statement:
-    "I make things about connection: the people I love, the places that raised me, and the moments that hurt a little and mean a lot.",
+    "Most of what I make comes back to home: leaving it, missing it, and finally seeing it clearly.",
 
   films: [
     {
-      title: "Film title",
-      youtube: "",
-      year: "2026",
-      runtime: "6 min",
+      title: "My Great Alaskan Adventure",
+      youtube: "Mx37hpye3yI",
+      year: "",
+      runtime: "",
       place: "Alaska",
-      feeling: "EDIT ME: what this one feels like, in a sentence.",
+      feeling: "Going back to the town that raised me, and actually seeing it this time.",
     },
     {
-      title: "Second film",
-      youtube: "",
-      year: "2025",
-      runtime: "4 min",
-      place: "Oregon",
-      feeling: "EDIT ME: what this one feels like, in a sentence.",
+      title: "The Grass Is (Not) Always Greener",
+      youtube: "YpY3vTVp_io",
+      year: "",
+      runtime: "",
+      place: "",
+      feeling: "Just me and the camera, on leaving for a better life and wondering if I ever needed to.",
     },
     {
-      title: "Third film",
-      youtube: "",
-      year: "2025",
-      runtime: "3 min",
-      place: "Pacific Northwest",
-      feeling: "EDIT ME: what this one feels like, in a sentence.",
+      title: "Fifty Feet of Falling Water",
+      youtube: "dUCl4FJAXcc",
+      year: "",
+      runtime: "",
+      place: "",
+      feeling: "Even in the dark stretches, there is something beautiful if you look.",
+      zoom: 1.32, // the film is letterboxed wider than 16:9; this crops the black bars off the thumbnail
     },
   ],
 
+  // Series with no photos yet stay hidden. When every series is empty, the
+  // site points people to Instagram instead.
   photography: [
     {
-      id: "series-one",
-      title: "Series one",
-      place: "Wasilla, Alaska",
-      year: "2026",
+      id: "home",
+      title: "Home",
+      place: "Alaska",
+      year: "",
       note: "EDIT ME: a couple of sentences about what you were looking for in this set.",
-      photos: [], // e.g. ["media/photos/series-one/01.jpg", "media/photos/series-one/02.jpg"]
-    },
-    {
-      id: "series-two",
-      title: "Series two",
-      place: "Oregon coast",
-      year: "2025",
-      note: "EDIT ME: a couple of sentences about this set.",
-      photos: [],
-    },
-    {
-      id: "series-three",
-      title: "Series three",
-      place: "On the road",
-      year: "2025",
-      note: "EDIT ME: a couple of sentences about this set.",
-      photos: [],
+      photos: [], // e.g. ["media/photos/home/01.jpg", "media/photos/home/02.jpg"]
     },
   ],
 
@@ -106,11 +96,10 @@ window.CM = {
     portrait: "", // e.g. "media/collin.jpg"
     // EDIT ME: each string is a paragraph. The first one is set larger.
     paragraphs: [
-      "I'm Collin. I shoot films and photographs between Alaska and Oregon.",
-      "CollinMotion is where my personal work lives: the projects I make because I need to, not because anyone asked. Most of it comes back to connection, the good kind and the kind that's hard to sit with.",
+      "I'm Collin. I make films and photographs, mostly about home and the people and places that make it.",
+      "CollinMotion is where my personal work lives: the things I make because I want to, not because anyone asked. Some of it is polished and some of it was thrown together the night before. All of it is honest.",
       "If something here stays with you, I'd love to hear about it.",
     ],
-    // EDIT ME: what you shoot with
-    kit: ["Camera body", "Lenses", "Lighting", "Microphones"],
+    kit: [], // optional, e.g. ["Sony A7 IV", "35mm f/1.4"]; leave empty to hide
   },
 };
