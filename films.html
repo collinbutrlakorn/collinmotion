@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Films | CollinMotion</title>
+  <meta name="description" content="Short films by Collin Butrlakorn.">
+  <meta name="theme-color" content="#2a1e1b">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600&family=Young+Serif&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="films">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="mark" href="./">CollinMotion</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="films.html" aria-current="page">Films</a></li>
+        <li><a href="photography.html">Photography</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="section page-top">
+      <header class="section-head"><div>
+        <h1 class="page-title">Films</h1>
+        <p class="lede">Short films, newest and favorite first. Each one is described by how it feels rather than what it is.</p>
+      </div></header>
+      <div class="films" id="films"></div>
+    </section>
+
+    <section class="section" aria-labelledby="shorts-h">
+      <div class="section-head">
+        <h2 id="shorts-h">Shorts</h2>
+        <a data-link="instagram" href="#">On Instagram</a>
+      </div>
+      <div class="shorts" id="shorts"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Collin Butrlakorn</p>
+    <ul>
+      <li><a data-link="youtube" href="#">YouTube</a></li>
+      <li><a data-link="instagram" href="#">Instagram</a></li>
+      <li><a data-link="email" href="#">Email</a></li>
+    </ul>
+  </footer>
+
+  <dialog id="player" aria-label="Film player">
+    <div class="player-frame"></div>
+    <div class="player-caption">
+      <h3></h3>
+      <button class="dialog-close" type="button">Close</button>
+    </div>
+  </dialog>
+
+  <script src="assets/js/content.js"></script>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>
