@@ -23,6 +23,14 @@
     return `<div class="frame placeholder ${extraClass}" data-label="${esc(label)}" style="--h:${t.h};--x:${t.x}%;--y:${t.y}%" role="img" aria-label="${esc(label)} (image coming soon)"></div>`;
   }
 
+  // Grids load a small copy ("01-sm.jpg") next to each photo; if one doesn't
+  // exist yet, fall back to the full image.
+  const sm = (p) => (p ? p.replace(/(\.[a-z]+)$/i, "-sm$1") : p);
+  document.addEventListener("error", (e) => {
+    const img = e.target;
+    if (img.tagName === "IMG" && /-sm\.[a-z]+$/i.test(img.src)) img.src = img.src.replace(/-sm(\.[a-z]+)$/i, "$1");
+  }, true);
+
   function ytThumb(id) {
     return id ? `https://i.ytimg.com/vi/${encodeURIComponent(id)}/maxresdefault.jpg` : "";
   }
@@ -122,7 +130,7 @@
   function seriesCard(s) {
     return `
       <a class="series-card" href="photography.html#${encodeURIComponent(s.id)}">
-        ${frame(s.photos[0], s.title, "", s.title)}
+        ${frame(sm(s.photos[0]), s.title, "", s.title)}
         <h3>${esc(s.title)}</h3>
         <p>${esc([s.place, s.year].filter(Boolean).join(", "))}</p>
       </a>`;
@@ -132,8 +140,8 @@
     if (!el) return;
     if (!SERIES.length) return el.closest(".section").remove(); // nothing to show on home yet
     el.innerHTML = SERIES
-      .slice(0, 3)
-      .map((s) => `<a href="photography.html#${encodeURIComponent(s.id)}" aria-label="${esc(s.title)}">${frame(s.photos[0], s.title, "", s.title)}</a>`)
+      .slice(0, 4)
+      .map((s) => `<a href="photography.html#${encodeURIComponent(s.id)}" aria-label="${esc(s.title)}">${frame(sm(s.photos[0]), s.title, "", s.title)}</a>`)
       .join("");
   }
 
@@ -152,7 +160,7 @@
         document.title = "Photography | CollinMotion";
         return;
       }
-      const photos = s.photos.map((p, i) => `<button type="button" data-i="${i}" aria-label="Open photo ${i + 1} of ${s.photos.length}">${frame(p, s.title, "", `${s.title}, photo ${i + 1}`)}</button>`);
+      const photos = s.photos.map((p, i) => `<button type="button" data-i="${i}" aria-label="Open photo ${i + 1} of ${s.photos.length}">${frame(sm(p), s.title, "", `${s.title}, photo ${i + 1}`)}</button>`);
       root.innerHTML = `
         <div class="series-view">
           <a class="back" href="photography.html">All photography</a>

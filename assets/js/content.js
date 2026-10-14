@@ -17,7 +17,9 @@
   PHOTOGRAPHY
     Each series is a group of photos. Put the images in media/photos/<series id>/
     and list them in "photos". The first photo is the cover.
-    Keep each image under ~500 KB (long edge 2000px, JPG quality ~80).
+    Export at 2000px on the long edge, JPG quality ~80. For faster grids, also
+    save a 1000px copy with "-sm" on the end (01.jpg -> 01-sm.jpg); if it's
+    missing, the full photo is used.
 
   SHORTS
     Leave the list empty and the shorts section quietly says more are coming.
@@ -76,29 +78,38 @@ window.CM = {
   ],
 
   photography: [
+    // note: optional, a sentence or two about the set. Left empty, it's hidden.
     {
-      id: "coast",
-      title: "The Coast",
-      place: "Oregon coast", // EDIT ME if that's not right
-      year: "",
-      note: "", // optional: a sentence or two about the set; leave empty to hide
-      photos: ["media/photos/coast/01.jpg", "media/photos/coast/02.jpg", "media/photos/coast/03.jpg", "media/photos/coast/04.jpg", "media/photos/coast/05.jpg"],
-    },
-    {
-      id: "woods",
-      title: "Woods and Water",
+      id: "cardo",
+      title: "With Cardo",
       place: "",
       year: "",
       note: "",
-      photos: ["media/photos/woods/01.jpg", "media/photos/woods/02.jpg", "media/photos/woods/03.jpg", "media/photos/woods/04.jpg", "media/photos/woods/05.jpg", "media/photos/woods/06.jpg"],
+      photos: ["media/photos/cardo/01.jpg", "media/photos/cardo/02.jpg", "media/photos/cardo/03.jpg"],
     },
     {
-      id: "after-dark",
-      title: "After Dark",
+      id: "cardo-and-jay",
+      title: "Cardo and Jay",
       place: "",
       year: "",
       note: "",
-      photos: ["media/photos/after-dark/01.jpg", "media/photos/after-dark/02.jpg", "media/photos/after-dark/03.jpg"],
+      photos: ["media/photos/cardo-and-jay/01.jpg", "media/photos/cardo-and-jay/02.jpg", "media/photos/cardo-and-jay/03.jpg", "media/photos/cardo-and-jay/04.jpg"],
+    },
+    {
+      id: "seaside",
+      title: "Seaside with Camryn",
+      place: "Seaside, Oregon",
+      year: "",
+      note: "",
+      photos: ["media/photos/seaside/01.jpg", "media/photos/seaside/02.jpg", "media/photos/seaside/03.jpg", "media/photos/seaside/04.jpg"],
+    },
+    {
+      id: "san-francisco",
+      title: "San Francisco",
+      place: "San Francisco, California",
+      year: "",
+      note: "",
+      photos: ["media/photos/san-francisco/01.jpg", "media/photos/san-francisco/02.jpg", "media/photos/san-francisco/03.jpg"],
     },
   ],
 

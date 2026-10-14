@@ -275,15 +275,16 @@ h2, .page-title {
 /* home: a loose strip of single frames */
 .photo-strip {
   display: grid; gap: clamp(.75rem, 2vw, 1.5rem);
-  grid-template-columns: 1.2fr .8fr 1fr; align-items: end;
+  grid-template-columns: 1.25fr .8fr 1fr .85fr; align-items: end;
 }
 .photo-strip a { display: block; }
 .photo-strip a:nth-child(1) .frame { aspect-ratio: 4 / 5; }
 .photo-strip a:nth-child(2) .frame { aspect-ratio: 3 / 4; }
 .photo-strip a:nth-child(3) .frame { aspect-ratio: 1 / 1; }
+.photo-strip a:nth-child(4) .frame { aspect-ratio: 2 / 3; }
 @media (max-width: 640px) {
-  .photo-strip { grid-template-columns: 1fr 1fr; }
-  .photo-strip a:nth-child(1) { grid-column: 1 / -1; }
+  .photo-strip { grid-template-columns: 1fr 1fr; align-items: start; }
+  .photo-strip a .frame { aspect-ratio: 4 / 5 !important; }
 }
 
 .series-view .back { color: var(--pencil); text-decoration: none; display: inline-block; margin-bottom: 1.5rem; border-bottom: 2px solid var(--sun); }
