@@ -119,6 +119,22 @@ window.CM = {
       note: "",
       photos: ["media/photos/san-francisco/01.jpg", "media/photos/san-francisco/02.jpg", "media/photos/san-francisco/03.jpg"],
     },
+    {
+      id: "portland-japanese-garden",
+      title: "Portland Japanese Garden",
+      place: "Oregon",
+      year: "",
+      note: "",
+      photos: ["media/photos/portland-japanese-garden/01.jpg", "media/photos/portland-japanese-garden/02.jpg", "media/photos/portland-japanese-garden/03.jpg", "media/photos/portland-japanese-garden/04.jpg", "media/photos/portland-japanese-garden/05.jpg"],
+    },
+    {
+      id: "fifty-feet",
+      title: "Fifty Feet of Falling Water",
+      place: "Stills",
+      year: "",
+      note: "",
+      photos: ["media/photos/fifty-feet/02.jpg", "media/photos/fifty-feet/01.jpg", "media/photos/fifty-feet/03.jpg", "media/photos/fifty-feet/04.jpg"],
+    },
   ],
 
   // Newest first. "with" credits a collaborator whose account posted it.
